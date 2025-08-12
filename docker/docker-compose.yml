@@ -1,4 +1,5 @@
-version: "3.8" # Updated version
+version: "3.8"
+
 services:
   mariadb:
     image: mariadb:10.8
@@ -6,7 +7,7 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
       - --skip-character-set-client-handshake
-      - --skip-innodb-read-only-compressed # Temporary fix for MariaDB 10.6
+      - --skip-innodb-read-only-compressed
     environment:
       MYSQL_ROOT_PASSWORD: 123
     volumes:
@@ -23,6 +24,7 @@ services:
     working_dir: /home/frappe
     volumes:
       - .:/workspace
+      - ./docker/init.sh:/workspace/init.sh
     ports:
       - 8006:8000
       - 9006:9000
