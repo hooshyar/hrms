@@ -24,7 +24,7 @@ services:
     working_dir: /home/frappe
     volumes:
       - .:/workspace
-      - ./docker/init.sh:/workspace/init.sh
+      - ./init.sh:/workspace/init.sh:ro
     ports:
       - 8006:8000
       - 9006:9000
